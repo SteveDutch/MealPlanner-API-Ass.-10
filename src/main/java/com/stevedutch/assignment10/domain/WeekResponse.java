@@ -8,16 +8,20 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 
 public class WeekResponse {
-	public void callApiExample () {
+	public ResponseEntity<String> callApiExampleWeek (Integer numCalories, String diet, 
+			String exclusions) {
 		RestTemplate rt = new RestTemplate();
 		
 		URI uri = UriComponentsBuilder.fromHttpUrl("https://api.spoonacular.com/mealplanner/generate")
 									  .queryParam("apiKey", "a58978b828464b0da9dafdd895da9d4c")
-									  .build()
+									  .queryParam("targetCalories", numCalories)
+									  .queryParam("diet", diet)
+									  .queryParam("intolerances", exclusions)								  .build()
 									  .toUri();
 		
 		ResponseEntity<String> response = rt.getForEntity(uri, String.class);
 		System.out.println(response);
+		return response;
 	}
 
 }

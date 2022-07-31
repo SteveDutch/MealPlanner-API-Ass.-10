@@ -11,15 +11,16 @@ import com.stevedutch.assignment10.domain.WeekResponse;
 public class WebController {
 	
 	DayResponse day = new DayResponse();
+	WeekResponse week = new WeekResponse();
 	
 	@GetMapping("mealplanner/week")
-	public ResponseEntity<WeekResponse> getWeekMeals(String numCalories, String diet, 
+	public ResponseEntity<String> getWeekMeals(String numCalories, String diet, 
 			String exclusions) {
-
-		
-				return null;
-		
+					Integer maxCal = Integer.valueOf(numCalories);
+					ResponseEntity<String> weekMeal= week.callApiExampleWeek(maxCal, diet, exclusions);
+					return weekMeal;
 	}
+		
 
 	@GetMapping("mealplanner/day")
 	public ResponseEntity<String> getDayMeals(String numCalories, String diet, 
@@ -31,3 +32,10 @@ public class WebController {
 	}
 
 }
+// TODO rt.getBod()
+// to get json file 
+// private Strings for vorlommende Variablen
+// put in DTO or POJO (und callAPiExample in POJO-Service)
+// weeks mit DateFormat?
+// ggf instruchtion GETMAPPING
+// watch video 14-09  zu Ende, von 12:03 ab

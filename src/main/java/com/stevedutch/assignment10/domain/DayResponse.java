@@ -7,6 +7,13 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 public class DayResponse { 
+	private String id;
+	private String imageType;
+	private String title;
+	private String readyInMinutes;
+	private String servings;
+	private String sourceUrl;
+	
 	
 	public ResponseEntity<String> callApiExample (Integer numCalories, String diet, 
 			String exclusions) {
@@ -22,6 +29,7 @@ public class DayResponse {
 									  .toUri();
 		
 		ResponseEntity<String> response = rt.getForEntity(uri, String.class);
+
 		System.out.println(response);
 		return response;
 	}
