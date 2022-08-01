@@ -11,7 +11,7 @@ import com.stevedutch.assignment10.domain.WeekResponse;
 public class WebController {
 	
 	DayResponse day = new DayResponse();
-	WeekResponse week = new WeekResponse();
+	WeekResponse week = new WeekResponse(null);
 	
 	@GetMapping("mealplanner/week")
 	public ResponseEntity<String> getWeekMeals(String numCalories, String diet, 
@@ -23,10 +23,10 @@ public class WebController {
 		
 
 	@GetMapping("mealplanner/day")
-	public ResponseEntity<String> getDayMeals(String numCalories, String diet, 
+	public ResponseEntity<DayResponse> getDayMeals(String numCalories, String diet, 
 			String exclusions) {
 					Integer maxCal = Integer.valueOf(numCalories);
-					ResponseEntity<String> dayMeal= day.callApiExample(maxCal, diet, exclusions);
+					ResponseEntity<DayResponse> dayMeal= day.callApiExample(maxCal, diet, exclusions);
 					return dayMeal;
 		
 	}

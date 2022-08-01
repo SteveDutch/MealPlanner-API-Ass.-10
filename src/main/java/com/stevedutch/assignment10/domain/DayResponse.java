@@ -13,24 +13,108 @@ public class DayResponse {
 	private String readyInMinutes;
 	private String servings;
 	private String sourceUrl;
-	
-	
-	public ResponseEntity<String> callApiExample (Integer numCalories, String diet, 
+
+
+
+	public DayResponse(String id, String imageType, String title, String readyInMinutes, String servings,
+			String sourceUrl) {
+		super();
+		this.id = id;
+		this.imageType = imageType;
+		this.title = title;
+		this.readyInMinutes = readyInMinutes;
+		this.servings = servings;
+		this.sourceUrl = sourceUrl;
+	}
+
+
+	public DayResponse() {
+		// TODO Auto-generated constructor stub
+	}
+
+
+	public ResponseEntity<DayResponse> callApiExample (Integer numCalories, String diet, 
 			String exclusions) {
 		RestTemplate rt = new RestTemplate();
 		
 		URI uri = UriComponentsBuilder.fromHttpUrl("https://api.spoonacular.com/mealplanner/generate")
 									  .queryParam("apiKey", "a58978b828464b0da9dafdd895da9d4c")
-									  .queryParam("timeFrame", "Tag or  value not necessary it seems")
+									  .queryParam("timeFrame", "day")
 									  .queryParam("targetCalories", numCalories)
 									  .queryParam("diet", diet)
 									  .queryParam("intolerances", exclusions)
 									  .build()
 									  .toUri();
 		
-		ResponseEntity<String> response = rt.getForEntity(uri, String.class);
+		ResponseEntity<DayResponse> response = rt.getForEntity(uri, DayResponse.class);
+	//	DayResponse dayMealPlan = new DayResponse(response.getBody();
 
+		System.out.println(response.getBody());
 		System.out.println(response);
+		System.out.println(rt.getForEntity(uri, String.class));
 		return response;
 	}
+
+
+	public String getId() {
+		return id;
+	}
+
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+
+	public String getImageType() {
+		return imageType;
+	}
+
+
+	public void setImageType(String imageType) {
+		this.imageType = imageType;
+	}
+
+
+	public String getTitle() {
+		return title;
+	}
+
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+
+	public String getReadyInMinutes() {
+		return readyInMinutes;
+	}
+
+
+	public void setReadyInMinutes(String readyInMinutes) {
+		this.readyInMinutes = readyInMinutes;
+	}
+
+
+	public String getServings() {
+		return servings;
+	}
+
+
+	public void setServings(String servings) {
+		this.servings = servings;
+	}
+
+
+	public String getSourceUrl() {
+		return sourceUrl;
+	}
+
+
+	public void setSourceUrl(String sourceUrl) {
+		this.sourceUrl = sourceUrl;
+	}
+
+
+
 }

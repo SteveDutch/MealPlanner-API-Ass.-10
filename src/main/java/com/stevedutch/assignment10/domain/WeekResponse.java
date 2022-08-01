@@ -8,6 +8,10 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 
 public class WeekResponse {
+	public WeekResponse(String body) {
+		// TODO Auto-generated constructor stub
+	}
+
 	public ResponseEntity<String> callApiExampleWeek (Integer numCalories, String diet, 
 			String exclusions) {
 		RestTemplate rt = new RestTemplate();
@@ -21,6 +25,9 @@ public class WeekResponse {
 		
 		ResponseEntity<String> response = rt.getForEntity(uri, String.class);
 		System.out.println(response);
+		System.out.println(response.getBody());
+		WeekResponse responseTest = new WeekResponse(response.getBody());
+		System.out.println(responseTest);
 		return response;
 	}
 
