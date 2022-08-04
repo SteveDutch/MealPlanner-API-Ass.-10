@@ -11,6 +11,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 @Component
 public class DayResponse { 
+	
 	private String id;
 	private String imageType;
 	private String title;
