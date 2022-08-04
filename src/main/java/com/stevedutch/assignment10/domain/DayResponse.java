@@ -2,12 +2,15 @@ package com.stevedutch.assignment10.domain;
 
 import java.net.URI;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
+
+import com.stevedutch.assignment10.service.ApiService;
 
 @Component
 public class DayResponse { 
@@ -19,8 +22,11 @@ public class DayResponse {
 	private String servings;
 	private String sourceUrl;
 
-	@Value("${key.value}")
-	private String keyValue;
+//	@Value("${key.value}")
+//	private String keyValue;
+	
+	@Autowired
+	ApiService apiService = new ApiService();
 
 
 
@@ -44,9 +50,9 @@ public class DayResponse {
 	public ResponseEntity<DayResponse> callApiExample (Integer numCalories, String diet, 
 			String exclusions) {
 		RestTemplate rt = new RestTemplate();
-		System.out.println(keyValue);
+		System.out.println(apiService.getKeyValue());
 		URI uri = UriComponentsBuilder.fromHttpUrl("https://api.spoonacular.com/mealplanner/generate")
-									  .queryParam("apiKey", keyValue)
+									  .queryParam("apiKey", apiService.getKeyValue())
 									  .queryParam("timeFrame", "day")
 									  .queryParam("targetCalories", numCalories)
 									  .queryParam("diet", diet)

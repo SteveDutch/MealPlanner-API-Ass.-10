@@ -2,11 +2,14 @@ package com.stevedutch.assignment10.domain;
 
 import java.net.URI;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
+
+import com.stevedutch.assignment10.service.ApiService;
 
 @Component
 public class WeekResponse {
@@ -17,9 +20,11 @@ public class WeekResponse {
 	private String readyInMinutes;
 	private String servings;
 	private String sourceUrl;
-	@Value("${key.value}")
-	private String keyValue;
+//	@Value("${key.value}")
+//	private String keyValue;
 
+	@Autowired
+	ApiService apiService = new ApiService();
 	
 	public WeekResponse(String id, String title, String imageType, String readyInMinutes, String servings, String sourceUrl) {
 		super();
@@ -42,12 +47,13 @@ public class WeekResponse {
 	public ResponseEntity<String> callApiExampleWeek (Integer numCalories, String diet, 
 			String exclusions) {
 		RestTemplate rt = new RestTemplate();
-		System.out.println(keyValue);
+		System.out.println(apiService.getKeyValue());
 		URI uri = UriComponentsBuilder.fromHttpUrl("https://api.spoonacular.com/mealplanner/generate")
-									  .queryParam("apiKey", keyValue)
+									  .queryParam("apiKey", apiService.getKeyValue())
 									  .queryParam("targetCalories", numCalories)
 									  .queryParam("diet", diet)
-									  .queryParam("intolerances", exclusions)								  .build()
+									  .queryParam("intolerances", exclusions)								  
+									  .build()
 									  .toUri();
 		
 		ResponseEntity<String> response = rt.getForEntity(uri, String.class);

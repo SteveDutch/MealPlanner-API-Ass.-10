@@ -8,8 +8,8 @@ class WeekResponseTest {
 
 	@Test
 	void test() {
-		DayResponse sut = new DayResponse();
-		sut.callApiExample(1500, "paleo", "gluten");
+		WeekResponse sut = new WeekResponse();
+		sut.callApiExampleWeek(1500, "paleo", "gluten");
 		System.out.println(sut);
 	}
 
