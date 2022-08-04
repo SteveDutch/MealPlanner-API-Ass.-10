@@ -1,5 +1,6 @@
 package com.stevedutch.assignment10.web;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,9 +10,10 @@ import com.stevedutch.assignment10.domain.WeekResponse;
 
 @RestController
 public class WebController {
-	
+	@Autowired
 	DayResponse day = new DayResponse();
-	WeekResponse week = new WeekResponse(null);
+//	@Autowired
+	WeekResponse week = new WeekResponse();
 	
 	@GetMapping("mealplanner/week")
 	public ResponseEntity<String> getWeekMeals(String numCalories, String diet, 
