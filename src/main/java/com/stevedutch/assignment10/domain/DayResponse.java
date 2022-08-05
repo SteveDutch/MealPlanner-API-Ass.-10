@@ -46,28 +46,28 @@ public class DayResponse {
 		// TODO Auto-generated constructor stub
 	}
 
-
-	public ResponseEntity<DayResponse> callApiExample (Integer numCalories, String diet, 
-			String exclusions) {
-		RestTemplate rt = new RestTemplate();
-		System.out.println(apiService.getKeyValue());
-		URI uri = UriComponentsBuilder.fromHttpUrl("https://api.spoonacular.com/mealplanner/generate")
-									  .queryParam("apiKey", apiService.getKeyValue())
-									  .queryParam("timeFrame", "day")
-									  .queryParam("targetCalories", numCalories)
-									  .queryParam("diet", diet)
-									  .queryParam("intolerances", exclusions)
-									  .build()
-									  .toUri();
-		
-		ResponseEntity<DayResponse> response = rt.getForEntity(uri, DayResponse.class);
-	//	DayResponse dayMealPlan = new DayResponse(response.getBody();
-
-		System.out.println(response.getBody());
-		System.out.println(response);
-		System.out.println(rt.getForEntity(uri, String.class));
-		return response;
-	}
+		// transferred to ApiService
+//	public ResponseEntity<DayResponse> callApiExample (Integer numCalories, String diet, 
+//			String exclusions) {
+//		RestTemplate rt = new RestTemplate();
+//		System.out.println(apiService.getKeyValue());
+//		URI uri = UriComponentsBuilder.fromHttpUrl("https://api.spoonacular.com/mealplanner/generate")
+//									  .queryParam("apiKey", apiService.getKeyValue())
+//									  .queryParam("timeFrame", "day")
+//									  .queryParam("targetCalories", numCalories)
+//									  .queryParam("diet", diet)
+//									  .queryParam("intolerances", exclusions)
+//									  .build()
+//									  .toUri();
+//		
+//		ResponseEntity<DayResponse> response = rt.getForEntity(uri, DayResponse.class);
+//	//	DayResponse dayMealPlan = new DayResponse(response.getBody();
+//
+//		System.out.println(response.getBody());
+//		System.out.println(response);
+//		System.out.println(rt.getForEntity(uri, String.class));
+//		return response;
+//	}
 
 
 	public String getId() {

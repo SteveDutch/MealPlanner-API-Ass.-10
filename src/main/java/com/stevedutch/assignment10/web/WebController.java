@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.stevedutch.assignment10.domain.DayResponse;
 import com.stevedutch.assignment10.domain.WeekResponse;
+import com.stevedutch.assignment10.service.ApiService;
 
 @RestController
 public class WebController {
@@ -14,21 +15,27 @@ public class WebController {
 	DayResponse day = new DayResponse();
 //	@Autowired
 	WeekResponse week = new WeekResponse();
+	@Autowired
+	ApiService apiService = new ApiService();
 	
 	@GetMapping("mealplanner/week")
 	public ResponseEntity<String> getWeekMeals(String numCalories, String diet, 
 			String exclusions) {
 					Integer maxCal = Integer.valueOf(numCalories);
-					ResponseEntity<String> weekMeal= week.callApiExampleWeek(maxCal, diet, exclusions);
+					String timeFrame = "week";
+					ResponseEntity<String> weekMeal = apiService.callApi(maxCal, diet, exclusions, timeFrame);
 					return weekMeal;
 	}
 		
 
 	@GetMapping("mealplanner/day")
-	public ResponseEntity<DayResponse> getDayMeals(String numCalories, String diet, 
+	public ResponseEntity<String> getDayMeals(String numCalories, String diet, 
 			String exclusions) {
 					Integer maxCal = Integer.valueOf(numCalories);
-					ResponseEntity<DayResponse> dayMeal= day.callApiExample(maxCal, diet, exclusions);
+					String timeFrame = "day";
+					ResponseEntity<String> dayMeal = apiService.callApi(maxCal, diet, exclusions, timeFrame);
+					
+//					ResponseEntity<DayResponse> dayMeal= day.callApiExample(maxCal, diet, exclusions);
 					return dayMeal;
 		
 	}
