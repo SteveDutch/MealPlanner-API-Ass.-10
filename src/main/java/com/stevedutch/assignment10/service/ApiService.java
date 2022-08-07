@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.stevedutch.assignment10.domain.DayResponse;
+import com.stevedutch.assignment10.dto.DayResponse;
 
 @Component
 public class ApiService {
@@ -17,7 +17,7 @@ public class ApiService {
 	private String keyValue;
 
 	
-	public ResponseEntity<String> callApi (Integer numCalories, String diet, 
+	public URI callApi (Integer numCalories, String diet, 
 			String exclusions, String timeFrame) {
 		RestTemplate rt = new RestTemplate();
 		System.out.println(keyValue);
@@ -29,14 +29,15 @@ public class ApiService {
 									  .queryParam("intolerances", exclusions)
 									  .build()
 									  .toUri();
-		
-		ResponseEntity<String> response = rt.getForEntity(uri, String.class);
-//	//	DayResponse dayMealPlan = new DayResponse(response.getBody();
-//
-		System.out.println(response.getBody());
-//		System.out.println(response);
+		// just for testing
+//		ResponseEntity<String> response = rt.getForEntity(uri, String.class);
+//		ResponseEntity<DayResponse> responseDayResponse = rt.getForEntity(uri, DayResponse.class);
+////		DayResponse dayMealPlan = new DayResponse(response.getBody(), id, imageType, title, readyInMinutes, servings, sourceUrl);
+////
+//		System.out.println("Hilsen fra ApiService class AND s you're shown: ResponseEntity<String> response.getBody " + response.getBody());
+////		System.out.println(response);
 //		System.out.println(rt.getForEntity(uri, String.class));
-		return response;
+		return uri;
 	}
 
 	public String getKeyValue() {

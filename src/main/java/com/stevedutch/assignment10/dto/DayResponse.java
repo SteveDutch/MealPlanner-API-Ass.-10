@@ -1,6 +1,8 @@
-package com.stevedutch.assignment10.domain;
+package com.stevedutch.assignment10.dto;
 
 import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,12 +17,11 @@ import com.stevedutch.assignment10.service.ApiService;
 @Component
 public class DayResponse { 
 	
-	private String id;
-	private String imageType;
-	private String title;
-	private String readyInMinutes;
-	private String servings;
-	private String sourceUrl;
+	private Meal meal;
+	private List<Meal> meals = new ArrayList<Meal>();
+	private Nutrients nutrients; 
+	
+
 
 //	@Value("${key.value}")
 //	private String keyValue;
@@ -30,20 +31,55 @@ public class DayResponse {
 
 
 
-	public DayResponse(String id, String imageType, String title, String readyInMinutes, String servings,
-			String sourceUrl) {
-		super();
-		this.id = id;
-		this.imageType = imageType;
-		this.title = title;
-		this.readyInMinutes = readyInMinutes;
-		this.servings = servings;
-		this.sourceUrl = sourceUrl;
-	}
+//	public DayResponse(String id, String imageType, String title, String readyInMinutes, String servings,
+//			String sourceUrl) {
+//		super();
+//		this.id = id;
+//		this.imageType = imageType;
+//		this.title = title;
+//		this.readyInMinutes = readyInMinutes;
+//		this.servings = servings;
+//		this.sourceUrl = sourceUrl;
+//	}
 
 
 	public DayResponse() {
 		// TODO Auto-generated constructor stub
+	}
+
+
+	public DayResponse(DayResponse body) {
+		// TODO Auto-generated constructor stub
+	}
+
+
+	public Meal getMeal() {
+		return meal;
+	}
+
+
+	public void setMeal(Meal meal) {
+		this.meal = meal;
+	}
+
+
+	public List<Meal> getMeals() {
+		return meals;
+	}
+
+
+	public void setMeals(List<Meal> meals) {
+		this.meals = meals;
+	}
+
+
+	public Nutrients getNutrients() {
+		return nutrients;
+	}
+
+
+	public void setNutrients(Nutrients nutrients) {
+		this.nutrients = nutrients;
 	}
 
 		// transferred to ApiService
@@ -70,65 +106,7 @@ public class DayResponse {
 //	}
 
 
-	public String getId() {
-		return id;
-	}
-
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-
-	public String getImageType() {
-		return imageType;
-	}
-
-
-	public void setImageType(String imageType) {
-		this.imageType = imageType;
-	}
-
-
-	public String getTitle() {
-		return title;
-	}
-
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-
-	public String getReadyInMinutes() {
-		return readyInMinutes;
-	}
-
-
-	public void setReadyInMinutes(String readyInMinutes) {
-		this.readyInMinutes = readyInMinutes;
-	}
-
-
-	public String getServings() {
-		return servings;
-	}
-
-
-	public void setServings(String servings) {
-		this.servings = servings;
-	}
-
-
-	public String getSourceUrl() {
-		return sourceUrl;
-	}
-
-
-	public void setSourceUrl(String sourceUrl) {
-		this.sourceUrl = sourceUrl;
-	}
-
+	
 
 
 }

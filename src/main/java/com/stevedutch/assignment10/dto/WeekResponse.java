@@ -1,4 +1,4 @@
-package com.stevedutch.assignment10.domain;
+package com.stevedutch.assignment10.dto;
 
 import java.net.URI;
 

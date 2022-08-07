@@ -12,7 +12,7 @@ class DayResponseTest {
 	void test() {
 		ApiService apiService = new ApiService();
 		System.out.println(apiService.getKeyValue());
-		DayResponse sut = new DayResponse(null, null, null, null, null, null);
+//		DayResponse sut = new DayResponse(null, null, null, null, null, null);
 		apiService.callApi(1500, "paleo", "gluten", "day");
 
 	}
