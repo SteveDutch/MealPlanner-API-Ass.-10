@@ -17,14 +17,9 @@ import com.stevedutch.assignment10.service.ApiService;
 @Component
 public class DayResponse { 
 	
-	private Meal meal;
+//	private Meal meal;
 	private List<Meal> meals = new ArrayList<Meal>();
 	private Nutrients nutrients; 
-	
-
-
-//	@Value("${key.value}")
-//	private String keyValue;
 	
 	@Autowired
 	ApiService apiService = new ApiService();
@@ -53,14 +48,14 @@ public class DayResponse {
 	}
 
 
-	public Meal getMeal() {
-		return meal;
-	}
-
-
-	public void setMeal(Meal meal) {
-		this.meal = meal;
-	}
+//	public Meal getMeal() {
+//		return meal;
+//	}
+//
+//
+//	public void setMeal(Meal meal) {
+//		this.meal = meal;
+//	}
 
 
 	public List<Meal> getMeals() {

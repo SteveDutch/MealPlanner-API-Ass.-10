@@ -30,7 +30,7 @@ public class WebController {
 		Integer maxCal = Integer.valueOf(numCalories);
 		String timeFrame = "day";
 		ResponseEntity<DayResponse> response = rt.getForEntity(apiService.callApi(maxCal, diet, exclusions, timeFrame), DayResponse.class);
-		System.out.println("\n Hilsen fra mealplnnar/day AND it's shown: ResponseEntity<DayResponse> response " + response);
+		System.out.println("\n Dette kommer fra mealplnnar/day AND it's shown: ResponseEntity<DayResponse> response " + response);
 		
 		
 //		DayResponse dayPlan = new DayResponse(response.getBody());
@@ -52,6 +52,7 @@ public class WebController {
 					Integer maxCal = Integer.valueOf(numCalories);
 					String timeFrame = "week";
 					ResponseEntity<WeekResponse> weekMeal = rt.getForEntity(apiService.callApi(maxCal, diet, exclusions, timeFrame), WeekResponse.class);
+					System.out.println("\n Dette kommer fra mealplanner/week AND it's shown: ResponseEntity<WeekResponse> response " + weekMeal);
 					return weekMeal;
 	}
 		

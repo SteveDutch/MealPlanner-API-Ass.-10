@@ -1,6 +1,8 @@
 package com.stevedutch.assignment10.dto;
 
 import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,27 +16,10 @@ import com.stevedutch.assignment10.service.ApiService;
 @Component
 public class WeekResponse {
 	
-	private String id;
-	private String imageType;
-	private String title;
-	private String readyInMinutes;
-	private String servings;
-	private String sourceUrl;
-//	@Value("${key.value}")
-//	private String keyValue;
-
+	private Week week;
 	@Autowired
 	ApiService apiService = new ApiService();
 	
-	public WeekResponse(String id, String title, String imageType, String readyInMinutes, String servings, String sourceUrl) {
-		super();
-		this.id = id;
-		this.imageType = imageType;
-		this.title = title;
-		this.readyInMinutes = readyInMinutes;
-		this.servings = servings;
-		this.sourceUrl = sourceUrl;
-	}
 //	
 //	public WeekResponse(String body) {
 //		// TODO Auto-generated constructor stub
@@ -63,5 +48,15 @@ public class WeekResponse {
 //		System.out.println(responseTest);
 		return response;
 	}
+
+	public Week getWeek() {
+		return week;
+	}
+
+	public void setWeek(Week week) {
+		this.week = week;
+	}
+
+
 
 }
