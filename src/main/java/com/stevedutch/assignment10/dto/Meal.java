@@ -8,9 +8,6 @@ public class Meal {
 	private String readyInMinutes;
 	private String servings;
 	private String sourceUrl;
-	
-	
-
 
 	public Meal(String id, String imageType, String title, String readyInMinutes, String servings, String sourceUrl) {
 		super();
@@ -21,8 +18,8 @@ public class Meal {
 		this.servings = servings;
 		this.sourceUrl = sourceUrl;
 	}
-	
-	public Meal () {
+
+	public Meal() {
 	}
 
 	public String getId() {
@@ -71,6 +68,12 @@ public class Meal {
 
 	public void setSourceUrl(String sourceUrl) {
 		this.sourceUrl = sourceUrl;
+	}
+
+	@Override
+	public String toString() {
+		return "Meal [id=" + id + ", imageType=" + imageType + ", title=" + title + ", readyInMinutes=" + readyInMinutes
+				+ ", servings=" + servings + ", sourceUrl=" + sourceUrl + "]";
 	}
 
 }

@@ -12,5 +12,12 @@ class ApiServiceTest {
 		String exspectedResult = sut.getKeyValue();
 		System.out.println(exspectedResult);
 	}
+	
+	@Test
+	void test() {
+		ApiService sut = new ApiService();
+		sut.callApi(1500, "paleo", "gluten", "day");
+		System.out.println(sut);
+	}
 
 }

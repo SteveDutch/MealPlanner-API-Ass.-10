@@ -51,4 +51,10 @@ public class Week {
 	public void setSunday(DayResponse sunday) {
 		this.sunday = sunday;
 	}
+	@Override
+	public String toString() {
+		return "Week [monday=" + monday + ", tuesday=" + tuesday + ", wednesday=" + wednesday + ", thursday=" + thursday
+				+ ", friday=" + friday + ", saturday=" + saturday + ", sunday=" + sunday + "]";
+	}
+	
 }
