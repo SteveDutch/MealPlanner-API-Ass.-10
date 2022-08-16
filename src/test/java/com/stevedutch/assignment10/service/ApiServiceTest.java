@@ -1,7 +1,5 @@
 package com.stevedutch.assignment10.service;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Test;
 
 class ApiServiceTest {

@@ -1,7 +1,5 @@
 package com.stevedutch.assignment10.domain;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Test;
 
 import com.stevedutch.assignment10.service.ApiService;
