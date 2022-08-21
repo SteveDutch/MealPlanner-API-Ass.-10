@@ -3,12 +3,9 @@ package com.stevedutch.assignment10.service;
 import java.net.URI;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
-
-import com.stevedutch.assignment10.dto.DayResponse;
 
 @Component
 public class ApiService {

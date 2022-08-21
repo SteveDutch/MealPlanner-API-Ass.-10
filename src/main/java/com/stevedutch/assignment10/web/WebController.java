@@ -34,8 +34,12 @@ public class WebController {
 
 	@GetMapping("mealplanner/week")
 	public ResponseEntity<WeekResponse> getWeekMeals(String numCalories, String diet, String exclusions) {
-		Integer maxCal = Integer.valueOf(numCalories);
 		String timeFrame = "week";
+		if (numCalories == null || diet == null || exclusions == null) {
+			ResponseEntity<WeekResponse> response = rt.getForEntity(apiService.callDefault(timeFrame), WeekResponse.class);
+			return response;
+		}
+		Integer maxCal = Integer.valueOf(numCalories);
 		ResponseEntity<WeekResponse> weekMeal = rt.getForEntity(apiService.callApi(maxCal, diet, exclusions, timeFrame),
 				WeekResponse.class);
 		return weekMeal;
