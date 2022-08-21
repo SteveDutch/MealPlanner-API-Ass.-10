@@ -21,8 +21,12 @@ public class WebController {
 
 	@GetMapping("mealplanner/day")
 	public ResponseEntity<DayResponse> getDayMeals(String numCalories, String diet, String exclusions) {
-		Integer maxCal = Integer.valueOf(numCalories);
 		String timeFrame = "day";
+		if (numCalories == null || diet == null || exclusions == null) {
+			ResponseEntity<DayResponse> response = rt.getForEntity(apiService.callDefault(timeFrame), DayResponse.class);
+			return response;
+		}
+		Integer maxCal = Integer.valueOf(numCalories);
 		ResponseEntity<DayResponse> response = rt.getForEntity(apiService.callApi(maxCal, diet, exclusions, timeFrame),
 				DayResponse.class);
 		return response;
