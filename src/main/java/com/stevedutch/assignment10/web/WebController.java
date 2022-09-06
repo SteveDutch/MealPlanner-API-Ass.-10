@@ -35,6 +35,8 @@ public class WebController {
 	@GetMapping("mealplanner/week")
 	public ResponseEntity<WeekResponse> getWeekMeals(String numCalories, String diet, String exclusions) {
 		String timeFrame = "week";
+		// TODO check here! Roches Bug entspricht: 500 / null / null 
+		// maybe try optionals ?
 		if (numCalories == null || diet == null || exclusions == null) {
 			ResponseEntity<WeekResponse> response = rt.getForEntity(apiService.callDefault(timeFrame), WeekResponse.class);
 			return response;

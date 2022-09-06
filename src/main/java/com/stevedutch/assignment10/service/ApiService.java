@@ -24,7 +24,7 @@ public class ApiService {
 	}
 
 	public URI callApi(Integer numCalories, String diet, String exclusions, String timeFrame) {
-
+		// TODO check: maxCalories & targetCalories at spoonacular
 		URI uri = UriComponentsBuilder.fromHttpUrl("https://api.spoonacular.com/mealplanner/generate")
 				.queryParam("apiKey", keyValue).queryParam("timeFrame", timeFrame)
 				.queryParam("targetCalories", numCalories).queryParam("diet", diet)
