@@ -17,7 +17,6 @@ public class DayResponse {
 	ApiService apiService = new ApiService();
 
 	public DayResponse() {
-
 	}
 
 	public List<Meal> getMeals() {
